@@ -8,6 +8,7 @@ public class ShovelController : MonoBehaviour
     private Sequence sequence;
     public void ShovelChangeState(GameStateEnum gameStateEnum)
     {
+        Debug.Log(gameStateEnum);
         isActive = gameStateEnum == GameStateEnum.Shovel ? true : false;
 
         if (isActive)
