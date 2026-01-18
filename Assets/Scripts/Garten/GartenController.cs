@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class GartenController : MonoBehaviour
     [Header("Базовые значения")]
     [SerializeField] private Material expectationMaterial;
     [SerializeField] private MeshRenderer gartenRender;
+    [SerializeField] private VolumeController volumeController;
     private ShovelController shovelController;
     [Header("Мaterials")]
     [SerializeField] private Material installMaterial;
@@ -20,8 +22,13 @@ public class GartenController : MonoBehaviour
     {
         ChangeState(GartenEnum.expectation);
         shovelController = FindFirstObjectByType<ShovelController>();
+        volumeController = FindFirstObjectByType<VolumeController>();
     }
 
+    /// <summary>
+    /// метод изменяющий состояние грядки
+    /// </summary>
+    /// <param name="gartenEnum"></param>
     public void ChangeState(GartenEnum gartenEnum)
     {
         switch (gartenEnum)
@@ -36,6 +43,7 @@ public class GartenController : MonoBehaviour
                 {
                     gartenRender.material = installMaterial;
                     this.gartenEnum = GartenEnum.installed;
+                    transform.DOPunchPosition(Vector3.up * 0.1f,1, 4);
                 }
                 break;
 
@@ -43,6 +51,9 @@ public class GartenController : MonoBehaviour
                 if (!shovelController.isActive && this.gartenEnum == GartenEnum.installed)
                 {
                     fertilizer.SetActive(true);
+
+                    fertilizer.transform.DOPunchPosition(Vector3.up * 0.1f, 1, 4);
+
                     this.gartenEnum = GartenEnum.sowing;
                     StartCoroutine(GartenFull());
                 }
@@ -52,8 +63,15 @@ public class GartenController : MonoBehaviour
                 if (!shovelController.isActive && this.gartenEnum == GartenEnum.harvest)
                 {
                     ExpressionGarten();
+                    volumeController.ActiveVolume();
+
+                    gartenFull.transform.DOPunchScale(Vector3.one * 0,1,4);
                     gartenFull.SetActive(false);
+
+                    fertilizer.transform.DOPunchScale(Vector3.one * 0, 1, 4);
                     fertilizer.SetActive(false);
+
+
                     this.gartenEnum = GartenEnum.expectation;
                 }
                 break;
@@ -83,9 +101,13 @@ public class GartenController : MonoBehaviour
         ChangeState(stateEnum);
     }
 
+    /// <summary>
+    /// рост урожая, корутина
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator GartenFull()
     {
-        var time = Random.Range(2,4);
+        var time = Random.Range(10,16);
         yield return new WaitForSeconds(time);
 
         gartenFull.SetActive(true);
