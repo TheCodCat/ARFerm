@@ -18,6 +18,7 @@ public class GartenController : MonoBehaviour
     [Space()]
     [SerializeField] GameObject fertilizer;
     [SerializeField] GameObject gartenFull;
+    [SerializeField] private AudioClip audioSowing;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class GartenController : MonoBehaviour
                     fertilizer.SetActive(true);
 
                     fertilizer.transform.DOPunchPosition(Vector3.up * 0.1f, 1, 4);
-
+                    AudioSource.PlayClipAtPoint(audioSowing, transform.position);
                     this.gartenEnum = GartenEnum.sowing;
                     StartCoroutine(GartenFull());
                 }

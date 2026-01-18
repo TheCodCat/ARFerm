@@ -57,6 +57,7 @@ MonoBehaviour:
   installMaterial: {fileID: 2100000, guid: 6ef237ac60ccd0a45af73b612e535514, type: 2}
   fertilizer: {fileID: 2966243569791447616}
   gartenFull: {fileID: 7962627371432578840}
+  audioSowing: {fileID: 8300000, guid: af1981e6ac5f5c84aa1e81c8b7d786d3, type: 3}
 --- !u!65 &2129087283199108520
 BoxCollider:
   m_ObjectHideFlags: 0
