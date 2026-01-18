@@ -11,6 +11,7 @@ public class GartenController : MonoBehaviour
     [SerializeField] private Material expectationMaterial;
     [SerializeField] private MeshRenderer gartenRender;
     [SerializeField] private VolumeController volumeController;
+    [SerializeField] private ParticleSystem particleSystemPut;
     private ShovelController shovelController;
     [Header("Ìaterials")]
     [SerializeField] private Material installMaterial;
@@ -64,6 +65,7 @@ public class GartenController : MonoBehaviour
                 {
                     ExpressionGarten();
                     volumeController.ActiveVolume();
+                    particleSystemPut.Play();
 
                     gartenFull.transform.DOPunchScale(Vector3.one * 0,1,4);
                     gartenFull.SetActive(false);
