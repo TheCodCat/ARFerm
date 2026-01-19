@@ -990,7 +990,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_PlanePrefab: {fileID: 6526364712274967648, guid: 8f9740d32eac48749912567064090e0b, type: 3}
+  m_PlanePrefab: {fileID: 4835526548395565981, guid: 8f9740d32eac48749912567064090e0b, type: 3}
   m_DetectionMode: 1
 --- !u!114 &461188288
 MonoBehaviour:
@@ -1375,7 +1375,7 @@ Transform:
   m_GameObject: {fileID: 555584250}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
