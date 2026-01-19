@@ -13,6 +13,8 @@ public class ShovelController : MonoBehaviour
 
         if (isActive)
         {
+            sequence.Kill();
+
             sequence = DOTween.Sequence()
                 .Append(shovelObj.transform.DOMoveY(0.1f, 1)).SetEase(Ease.Linear)
                 .Append(shovelObj.transform.DOMoveY(0f, 1)).SetEase(Ease.Linear)

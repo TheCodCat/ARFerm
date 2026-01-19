@@ -23,7 +23,11 @@ public class UIController : MonoBehaviour
 			{
                 ChangeGameState?.Invoke(GameStateEnum.Hay);
             }
-		}
+            else if (toggles.name.Equals("ToggleFence"))
+            {
+                ChangeGameState?.Invoke(GameStateEnum.Fence);
+            }
+        }
 		else
 			ChangeGameState?.Invoke(GameStateEnum.None);
 	}

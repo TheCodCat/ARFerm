@@ -1,4 +1,4 @@
 public enum GameStateEnum
 {
-    None, Shovel, Hay
+    None, Shovel, Hay, Fence
 }
